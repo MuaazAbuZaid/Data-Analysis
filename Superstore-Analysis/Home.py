@@ -11,7 +11,7 @@ st.markdown(''' <center>  <h6>
     This app is created to analyze the data of a Superstore </center> </h6> ''', unsafe_allow_html=True)
 
 # the path of a photo provided from the path of this file
-st.image('https://github.com/MuaazAbuZaid/Data-Analysis/blob/main/Superstore-Analysis/Sources/Superstore.jpeg')
+st.image("./Sources/Superstore.jpeg", encoding= 'unicode_escape')
 
 
 
