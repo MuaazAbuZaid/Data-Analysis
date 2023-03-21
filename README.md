@@ -1,4 +1,4 @@
-# Data-Analysis
+# Data-Analysis Portfolio
 ## EDA Projects 
 * __[Superstore-Analysis](https://github.com/MuaazAbuZaid/Data-Analysis/tree/main/Superstore-Analysis)__:
 Utilize python to perform end to end EDA on Superstore Data.
