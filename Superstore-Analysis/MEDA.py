@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.express as px
 
 # Data Reading
-df_source = pd.read_csv("Superstore-Analysis/Sources/Sample_Superstore.csv", encoding= 'unicode_escape') # Data from source - Before cleaning
+df_source = pd.read_csv("Superstore-Analysis\Sources\Sample_Superstore.csv", encoding= 'unicode_escape') # Data from source - Before cleaning
 
 # Data Cleaning & Preprocessing
 # 1- Drop unnecessary columns.(customer name, country, postal code, region, city)
