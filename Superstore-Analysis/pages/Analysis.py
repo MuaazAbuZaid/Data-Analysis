@@ -179,7 +179,7 @@ with tab_categ_subcat:
     # Third section
     st.header('3- What is the profit margin of each subcategory?')
     # margin bar function in MEDA file takes dataframe and returns bar plot (margin)
-    st.plotly_chart(md.margin_bar(md.df))
+    # st.plotly_chart(md.margin_bar(md.df))
     # Fourth section
     st.header('4- What is the distribution of category & subcategory according to sales, profit & quantity?')
     con_cat_radio = st.container()
