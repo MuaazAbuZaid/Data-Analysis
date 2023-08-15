@@ -76,7 +76,7 @@ def margin_bar(df):
     df_margin.sort_values(by= 'margin', ascending= True, inplace= True)
     fig_margin = px.bar(df_margin, x= 'margin', y= 'sub_category', color= 'margin',text= (df_margin['margin']/100), text_auto='.2s', title= 'Profit margin by sub_category')
     fig_margin.update_traces(texttemplate='%{text:.1%}', textposition='inside')
-    # fig_margin.add_vline(x= df_margin.mean()[2], opacity=1, line_width=2, line_dash='dash', line_color='Red', annotation_text= f'Mean of Profit margin \n {int(df_margin.mean()[2])} %', annotation_font_color = "Red")
+    fig_margin.add_vline(x= df_margin.mean()[2], opacity=1, line_width=2, line_dash='dash', line_color='Red', annotation_text= f'Mean of Profit margin \n {int(df_margin.mean()[2])} %', annotation_font_color = "Red")
     return fig_margin
 
 # Bar plot function in category & sub_category tab returns bar plot 
