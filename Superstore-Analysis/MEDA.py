@@ -89,7 +89,7 @@ def bar_plot(df, dim, fact):
 # Scatter function in sub_category tab takes dataframe, dimension, dimension value and returns scatter plot for sales against profit for this dimension value
 def sub_cat_scat(df, dim, dim_value):
     df_scat = df[df[dim] == dim_value]
-    corr_value = float('%.4f' % (df_scat.corr().loc['sales','profit']))
+    corr_value = float('%.4f' % (df_scat[['sales', 'profit']].corr().loc['sales','profit']))
     scat_sub_cat = px.scatter(df_scat, x= 'sales', y= 'profit', title= f'Correlation between Sales & Profit of {dim_value} equal {corr_value}') 
     return scat_sub_cat # scatter plot
 
