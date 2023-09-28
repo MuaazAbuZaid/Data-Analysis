@@ -76,14 +76,14 @@ def margin_bar(df):
     df_margin.sort_values(by= 'margin', ascending= True, inplace= True)
     fig_margin = px.bar(df_margin, x= 'margin', y= 'sub_category', color= 'margin',text= (df_margin['margin']/100), text_auto='.2s', title= 'Profit margin by sub_category')
     fig_margin.update_traces(texttemplate='%{text:.1%}', textposition='inside')
-    fig_margin.add_vline(x= df_margin.mean()[2], opacity=1, line_width=2, line_dash='dash', line_color='Red', annotation_text= f'Mean of Profit margin \n {int(df_margin.mean()[2])} %', annotation_font_color = "Red")
+    fig_margin.add_vline(x= df_margin.select_dtypes(include= 'number').mean()[2], opacity=1, line_width=2, line_dash='dash', line_color='Red', annotation_text= f'Mean of Profit margin \n {int(df_margin.mean()[2])} %', annotation_font_color = "Red")
     return fig_margin
 
 # Bar plot function in category & sub_category tab returns bar plot 
 def bar_plot(df, dim, fact):
     df_sub_category = df.groupby(dim)[fact].sum().reset_index().sort_values(fact, ascending= False)
     fig_bar = px.bar(df_sub_category, x= dim, y= fact, color= fact, title= f'Distribution of {dim} According to {fact}')
-    fig_bar.add_hline(y= df_sub_category.mean()[0],opacity=1, line_width=2, line_dash='dash', line_color='Red', annotation_text= f'Mean of {fact} \n {int(df_sub_category.mean()[0])}')
+    fig_bar.add_hline(y= df_sub_category.select_dtypes(include= 'number').mean()[0],opacity=1, line_width=2, line_dash='dash', line_color='Red', annotation_text= f'Mean of {fact} \n {int(df_sub_category.mean()[0])}')
     return fig_bar 
 
 # Scatter function in sub_category tab takes dataframe, dimension, dimension value and returns scatter plot for sales against profit for this dimension value
