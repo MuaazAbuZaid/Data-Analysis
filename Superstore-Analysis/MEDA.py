@@ -83,7 +83,7 @@ def margin_bar(df):
 def bar_plot(df, dim, fact):
     df_sub_category = df.groupby(dim)[fact].sum().reset_index().sort_values(fact, ascending= False)
     fig_bar = px.bar(df_sub_category, x= dim, y= fact, color= fact, title= f'Distribution of {dim} According to {fact}')
-    fig_bar.add_hline(y= df_sub_category.select_dtypes(include= 'number').mean()[0],opacity=1, line_width=2, line_dash='dash', line_color='Red', annotation_text= f'Mean of {fact} \n {int(df_sub_category.mean()[0])}')
+    fig_bar.add_hline(y= df_sub_category[fact].mean(),opacity=1, line_width=2, line_dash='dash', line_color='Red', annotation_text= f'Mean of {fact} \n {int(df_sub_category[fact].mean())}')
     return fig_bar 
 
 # Scatter function in sub_category tab takes dataframe, dimension, dimension value and returns scatter plot for sales against profit for this dimension value
