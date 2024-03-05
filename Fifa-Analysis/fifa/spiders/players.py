@@ -2,14 +2,10 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 import time
-from lxml import etree
-# from scrapy_cloudflare_middleware.middlewares import CloudFlareMiddleware
-
 
 class PlayersSpider(CrawlSpider):
     name = "players"
     allowed_domains = ["sofifa.com"]
-    # start_urls = ['https://sofifa.com']
     
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
 
@@ -25,31 +21,10 @@ class PlayersSpider(CrawlSpider):
         request.headers['User-Agent'] = self.user_agent
         return request
 
-    # def parse_start_url(self, response):
-
-    #     links = response.xpath('//table//tbody//tr/td[2]/a')
-    #     for link in links:  # Adjust the range as per your requirement
-    #         name = link.xpath('.//text()').get()
-    #         request = scrapy.Request(
-    #             response.urljoin(link.xpath('.//@href').get()), 
-    #             callback=self.parse_item, 
-    #             headers={'User-Agent': self.user_agent}
-    #         )
-    #         request.meta['name'] = name  # Ensure the 'name' key is set in the meta
-    #         yield request
-
-        # links = response.xpath('//table//tbody//tr/td[2]/a')
-        # for link in links:  # Adjust the range as per your requirement
-        #     name = link.xpath('.//text()').get()
-        #     # You can process the link text or perform any operations here
-        #     # If you want to follow the link after extracting the text, you can do so
-        #     yield scrapy.Request(response.urljoin(link.xpath('.//@href').get()), callback=self.parse_item, headers={'User-Agent': self.user_agent}, meta= {'name': name})
-
     def parse_item(self, response):
 
-        # time.sleep(0.5)
-        # if response.status == 200:
-            # name = response.meta['name']
+        time.sleep(0.5)
+        
         if '/player' in response.url:
             yield {
                 'full_name': response.xpath('//div[@class="profile clearfix"]/h1/text()').get(),
